@@ -1,5 +1,7 @@
 const buttContainer = document.querySelector('.number-buttons')
 const resultScreen = document.querySelector('.show-result')
+const calcKeyboardInput = document.querySelector('.user-interface button')
+const keyboardInput = document.querySelector('.user-interface input')
 let currInput = ''
 let currExpress = ''
 
@@ -67,6 +69,13 @@ const expressGen = () => {
         buttContainer.appendChild(expressButt)
     })
 }
+
+keyboardInput.addEventListener('input', (e) => {
+    calcKeyboardInput.addEventListener('click', () => {
+        let result = calcInput(e.target.value)
+        resultScreen.innerHTML = result
+    })
+})
 
 const calcInput = (mathString) => {
     let resultCalc = eval(mathString)
