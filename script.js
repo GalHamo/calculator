@@ -16,7 +16,6 @@ const numButtGen = () => {
         numButt.classList.add('num-butt')
         numButt.innerHTML = `${btn.id}`
         numButt.addEventListener('click', () => {
-            console.log(btn.id)
             currInput += `${btn.id}`
             resultScreen.innerHTML = currInput
         })
@@ -44,15 +43,20 @@ const expressGen = () => {
         }
         expressButt.addEventListener('click', (e) => {
             currExpress = `${e.target.innerHTML}`
-            console.log(currExpress)
             if (currExpress === '='){
-                currExpress = ''
-                currInput = ''
-                resultScreen.innerHTML = ''
+                if (expressions.includes(currInput[currInput.length - 1])){
+                    resultScreen.innerHTML = NaN
+                    currExpress = ''
+                    currInput = ''
+                } else {
+                    let result = calcInput(currInput)
+                    currExpress = ''
+                    currInput = ''
+                    resultScreen.innerHTML = result
+                }
+                
             }
             if (currExpress === 'C'){
-                console.log('y')
-                console.log(currInput)
                 currInput = currInput.slice(0, currInput.length - 1)
                 resultScreen.innerHTML = currInput
             } else {
@@ -63,5 +67,11 @@ const expressGen = () => {
         buttContainer.appendChild(expressButt)
     })
 }
+
+const calcInput = (mathString) => {
+    let resultCalc = eval(mathString)
+    return resultCalc
+}
+
 numButtGen()
 expressGen()
