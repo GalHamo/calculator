@@ -18,6 +18,7 @@ body{
     width: 80%;
     height: 100%;
     border: 10px black solid;
+    border-radius: 25px;
     box-shadow: 0px 10px 100px 10px;
     display: flex;
     flex-direction: column;
