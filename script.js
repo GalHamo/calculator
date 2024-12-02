@@ -4,10 +4,15 @@ const calcKeyboardInput = document.querySelector('.user-interface button')
 const keyboardInput = document.querySelector('.user-interface input')
 let currInput = ''
 let currExpress = ''
+let firstUse = true
+let arrToCalc = []
+let sum = 0
+let sign = ''
+
 
 const numButtGen = () => {
     let numButtArr = []
-    for (let i = 1; i <= 9; i++){
+    for (let i = 0; i <= 9; i++){
         let btnId = {
             id : i
         }
@@ -27,7 +32,7 @@ const numButtGen = () => {
 
 const expressGen = () => {
     let expressButtArr = []
-    const expressions = ['+', '-', '*', '/', 'C', '=']
+    const expressions = ['+', '-', '*', '/', 'C', '=', '.', 'AC']
     for (let i = 0; i < expressions.length; i++){
 
         let expressObj = {
