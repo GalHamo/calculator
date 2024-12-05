@@ -115,13 +115,8 @@ clearBtn.innerHTML = 'C'
 clearBtn.classList.add('express-butt')
 clearBtn.classList.add('delete-butt')
 clearBtn.addEventListener('click', () => {
-    if (currShowing[currShowing.length - 1] === sign){
-        currShowing = currShowing.slice(0, currShowing.length - 1)
-        resultScreen.innerHTML = currShowing
-    } else {
-        numContainer = numContainer.slice(0, numContainer.length - 1)
-        resultScreen.innerHTML = numContainer
-    }
+      numContainer = numContainer.slice(0, numContainer.length - 1)
+      resultScreen.innerHTML = numContainer
 })
 buttContainer.appendChild(clearBtn)
 
@@ -143,6 +138,7 @@ const add = (firstNum, secNum) => {
       firstNum = Number(arrToCalc[0])
       secNum = Number(arrToCalc[arrToCalc.length -1])
       sum = firstNum + secNum
+      sum = parseFloat(sum.toFixed(2))
     }
 }
   
@@ -152,6 +148,7 @@ const subtract = (firstNum, secNum) => {
     firstNum = Number(arrToCalc[0])
     secNum = Number(arrToCalc[arrToCalc.length -1])
     sum = firstNum - secNum
+    sum = parseFloat(sum.toFixed(2))
   }
 }
 
@@ -161,6 +158,7 @@ const multiply = (firstNum, secNum) => {
     firstNum = Number(arrToCalc[0])
     secNum = Number(arrToCalc[arrToCalc.length -1])
     sum = firstNum * secNum
+    sum = parseFloat(sum.toFixed(2))
   }
 }
   
@@ -170,6 +168,7 @@ const divide = (firstNum, secNum) => {
     firstNum = Number(arrToCalc[0])
     secNum = Number(arrToCalc[arrToCalc.length -1])
     sum = firstNum / secNum
+    sum = parseFloat(sum.toFixed(2))
   }
 }  
   
@@ -209,7 +208,6 @@ calcBtn.addEventListener('click', () => {
   }
   arrToCalc = []
   sign = ''
-  console.log(firstUse)
   firstUse = false
 })
 
