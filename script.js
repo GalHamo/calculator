@@ -63,7 +63,7 @@ subBtn.addEventListener('click', () => {
   if (!currShowing.includes(sign)){
     subtract(numContainer)
     currShowing += sign
-    resultScreen.innerHTML += currShowing
+    resultScreen.innerHTML = currShowing
   }
   numContainer = ''
 })
@@ -77,7 +77,7 @@ mulBtn.addEventListener('click', () => {
   if(!currShowing.includes(sign)){
     multiply(numContainer)
     currShowing += sign
-    resultScreen.innerHTML += currShowing
+    resultScreen.innerHTML = currShowing
   }
   numContainer = ''
 })
@@ -91,7 +91,7 @@ divideBtn.addEventListener('click', () => {
   if(!currShowing.includes(sign)){
     divide(numContainer)
     currShowing += sign
-    resultScreen.innerHTML += currShowing
+    resultScreen.innerHTML = currShowing
   }
   numContainer = ''
 })
@@ -137,6 +137,7 @@ resetBtn.innerHTML = 'AC'
 resetBtn.classList.add('express-butt')
 resetBtn.addEventListener('click', () => {
     numContainer = ''
+    currShowing = ''
     resultScreen.innerHTML = ''
     firstUse = true
     sum = 0
@@ -168,6 +169,7 @@ const add = (num) => {
       }
     } else {
       if (numContainer.length > 0){
+        console.log('length is greater than 0')
         arrToCalc = []
         arrToCalc.push(Number(sum))
         arrToCalc.push(Number(num))
@@ -257,6 +259,8 @@ calcBtn.addEventListener('click', () => {
         break
     }
     sign = ''
+    currShowing = ''
+    currShowing += sum
     console.log(firstUse)
     numContainer = ''
     firstUse = false
