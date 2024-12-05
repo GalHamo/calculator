@@ -7,6 +7,7 @@ let sign = ''
 let firstUse = true
 let arrToCalc = []
 let sum = 0
+let validDot = true
 
 const numButtGen = () => {
     let numButtArr = []
@@ -39,13 +40,13 @@ const plusBtn = document.createElement('button')
 plusBtn.innerHTML = '+'
 plusBtn.classList.add('express-butt')
 plusBtn.addEventListener('click', () => {
-  if (Number(numContainer)){
+  if (Number(numContainer) || numContainer === '0'){
     sign = '+'
-  }
-  if (!numContainer.includes(sign)){
+    validDot = true
     numContainer += sign
     resultScreen.innerHTML = numContainer
   }
+  
 })
 buttContainer.appendChild(plusBtn)
 
@@ -53,14 +54,11 @@ const subBtn = document.createElement('button')
 subBtn.innerHTML = '-'
 subBtn.classList.add('express-butt')
 subBtn.addEventListener('click', () => {
-  if (Number(numContainer)){
+  if (Number(numContainer) || numContainer === '0'){
     sign = '-'
-  }
-  if (!numContainer.includes(sign)){
     numContainer += sign
     resultScreen.innerHTML = numContainer
   }
-
 })
 buttContainer.appendChild(subBtn)
 
@@ -68,14 +66,11 @@ const mulBtn = document.createElement('button')
 mulBtn.innerHTML = '*'
 mulBtn.classList.add('express-butt')
 mulBtn.addEventListener('click', () => {
-  if (Number(numContainer)){
+  if (Number(numContainer) || numContainer === '0'){
     sign = '*'
-  }
-  if(!numContainer.includes(sign)){
     numContainer += sign
     resultScreen.innerHTML = numContainer
   }
-
 })
 buttContainer.appendChild(mulBtn)
 
@@ -83,14 +78,11 @@ const divideBtn = document.createElement('button')
 divideBtn.innerHTML = '/'
 divideBtn.classList.add('express-butt')
 divideBtn.addEventListener('click', () => {
-  if (Number(numContainer)){
+  if (Number(numContainer) || numContainer === '0'){
     sign = '/'
-  }
-  if(!numContainer.includes(sign)){
     numContainer += sign
     resultScreen.innerHTML = numContainer
   }
-
 })
 buttContainer.appendChild(divideBtn)
 
@@ -98,9 +90,11 @@ const dotBtn = document.createElement('button')
 dotBtn.innerHTML = '.'
 dotBtn.classList.add('express-butt')
 dotBtn.addEventListener('click', () => {
-  if (Number(numContainer[numContainer.length - 1])){
+  if (!isNaN(numContainer[numContainer.length - 1]) && validDot){
+    validDot = false
     numContainer += '.'
     resultScreen.innerHTML = numContainer
+    firstUse = true
   }
 })
 buttContainer.appendChild(dotBtn)
