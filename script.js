@@ -7,8 +7,6 @@ let sign = ''
 let firstUse = true
 let arrToCalc = []
 let sum = 0
-let currShowing = ''
-
 
 const numButtGen = () => {
     let numButtArr = []
@@ -24,14 +22,12 @@ const numButtGen = () => {
         numButt.innerHTML = `${btn.id}`
         numButt.addEventListener('click', () => {
           if (!firstUse && !sign){
-            console.log('!first')
             numContainer = ''
             sum = 0
             arrToCalc = []
             firstUse = true
         }
             numContainer += `${btn.id}`
-            console.log(numContainer, 'numContainer')
             resultScreen.innerHTML = numContainer
             
         })
@@ -47,7 +43,6 @@ plusBtn.addEventListener('click', () => {
     sign = '+'
   }
   if (!numContainer.includes(sign)){
-    console.log('nope')
     numContainer += sign
     resultScreen.innerHTML = numContainer
   }
@@ -103,10 +98,7 @@ const dotBtn = document.createElement('button')
 dotBtn.innerHTML = '.'
 dotBtn.classList.add('express-butt')
 dotBtn.addEventListener('click', () => {
-    console.log('dotbtn')
-    console.log(numContainer)
   if (Number(numContainer[numContainer.length - 1])){
-    console.log('dot')
     numContainer += '.'
     resultScreen.innerHTML = numContainer
   }
@@ -147,12 +139,11 @@ buttContainer.appendChild(resetBtn)
 
 const add = (firstNum, secNum) => {
   arrToCalc.push(firstNum, secNum)
-  console.log(arrToCalc, 'after pushing 2 nums')
   if (arrToCalc.length === 2){
       firstNum = Number(arrToCalc[0])
       secNum = Number(arrToCalc[arrToCalc.length -1])
       sum = firstNum + secNum
-      console.log('Sum is:', sum)}
+    }
 }
   
 const subtract = (firstNum, secNum) => {
@@ -161,7 +152,6 @@ const subtract = (firstNum, secNum) => {
     firstNum = Number(arrToCalc[0])
     secNum = Number(arrToCalc[arrToCalc.length -1])
     sum = firstNum - secNum
-    console.log('Sum is:', sum)
   }
 }
 
@@ -171,7 +161,6 @@ const multiply = (firstNum, secNum) => {
     firstNum = Number(arrToCalc[0])
     secNum = Number(arrToCalc[arrToCalc.length -1])
     sum = firstNum * secNum
-    console.log('Sum is:', sum)
   }
 }
   
@@ -181,7 +170,6 @@ const divide = (firstNum, secNum) => {
     firstNum = Number(arrToCalc[0])
     secNum = Number(arrToCalc[arrToCalc.length -1])
     sum = firstNum / secNum
-    console.log('Sum is:', sum)
   }
 }  
   
@@ -191,7 +179,6 @@ calcBtn.addEventListener('click', () => {
   let firstNum = numContainer.slice(0, signPos)
   let secNum = numContainer.slice(signPos + 1, endPos)
 
-  console.log(firstNum, secNum, '2Nums')
   switch(sign) {
       case '+':
         add(firstNum, secNum)
@@ -227,4 +214,3 @@ calcBtn.addEventListener('click', () => {
 })
 
 numButtGen()
-// expressGen()
